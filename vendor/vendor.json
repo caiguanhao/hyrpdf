@@ -1,0 +1,35 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "kNvIxjs3Hd0nopHlzwIQl2bA4OI=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "2e29ea41f0d13f4a303c75553f4eeadddc7a4c56",
+			"revisionTime": "2016-04-08T11:41:18Z"
+		},
+		{
+			"checksumSHA1": "YKJEHQmesxr6ExwGE4WZrpQsq4s=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "3ad29d1ad1c4f2023e355603324348cf1f4b2d48",
+			"revisionTime": "2015-07-30T17:44:59Z"
+		},
+		{
+			"checksumSHA1": "2JZ0qBQc+0BRRqi5AG3hLjNlL0w=",
+			"path": "github.com/caiguanhao/baiduocr",
+			"revision": "5d4ceb9cc018740a945e4c3f75707ed97a28c382",
+			"revisionTime": "2016-05-21T12:56:01Z"
+		},
+		{
+			"checksumSHA1": "kFiChYp66wWKB+OgQzRFPDaCQ9s=",
+			"path": "github.com/caiguanhao/gotogether",
+			"revision": "ffef76890598a0732d207e0a539c2c1ccab066ff",
+			"revisionTime": "2016-05-19T06:31:58Z"
+		},
+		{
+			"path": "golang.org/x/net/html",
+			"revision": ""
+		}
+	],
+	"rootPath": "github.com/caiguanhao/hyrpdf"
+}
