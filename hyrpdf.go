@@ -12,6 +12,7 @@ import (
 	"os"
 	"path"
 	"regexp"
+	"runtime"
 	"strings"
 	"time"
 
@@ -269,48 +270,41 @@ func main() {
 	log.Println("找到", len(details), "个借款人")
 
 	gotogether.Queue{
-		Concurrency: 5,
-		AddJob: func(jobs *chan interface{}, done *chan interface{}, errs *chan error) {
+		Concurrency: 10,
+		AddJob: func(jobs *chan interface{}) {
 			gotogether.Enumerable(details).Each(func(item interface{}) {
 				detail := item.([2]string)
 				detailDoc, err := getDocument(detail[0], *session)
 				if err != nil {
-					*errs <- err
+					debug(err)
 				} else {
 					file, hasFile := detailDoc.Find("iframe").Attr("src")
-					if hasFile {
+					if hasFile && file != "" {
 						*jobs <- [2]string{file, detail[1] + ".pdf"}
 					}
 				}
 			})
 		},
-		OnAddJobError: func(err *error) {
-			debug(*err)
-		},
-		DoJob: func(job *interface{}) (ret interface{}, err error) {
+		DoJob: func(job *interface{}) {
 			paths := (*job).([2]string)
 			var written int64
 			written, err = download(paths[0], paths[1])
 			if err != nil {
-				return
-			}
-			ret = []interface{}{paths[1], written, err}
-			return
-		},
-		OnJobError: func(err *error) {
-			debug(*err)
-		},
-		OnJobSuccess: func(ret *interface{}) {
-			rets := (*ret).([]interface{})
-			file, written := rets[0].(string), rets[1].(int64)
-			if written < 0 {
-				debug(file, "已存在")
+				debug(err)
 			} else {
-				debug(file, "已下载", humanBytes(float64(written)))
+				if written < 0 {
+					debug(paths[1], "已存在")
+				} else {
+					debug(paths[1], "已下载", humanBytes(float64(written)))
+				}
 			}
 		},
 	}.Run()
 
-	fmt.Println("已完成，可以关闭了。")
-	time.Sleep(time.Minute * 5)
+	if runtime.GOOS == "windows" {
+		fmt.Println("已完成，可以关闭了。")
+		time.Sleep(time.Minute * 5)
+	} else {
+		fmt.Println("已完成。")
+	}
 }
