@@ -3,10 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "kNvIxjs3Hd0nopHlzwIQl2bA4OI=",
+			"checksumSHA1": "U68mPuWsWp6c5XTevgNUP8orU/8=",
 			"path": "github.com/PuerkitoBio/goquery",
-			"revision": "2e29ea41f0d13f4a303c75553f4eeadddc7a4c56",
-			"revisionTime": "2016-04-08T11:41:18Z"
+			"revision": "77cbaef46a3af185a3afb87f88a366f3dee2a904",
+			"revisionTime": "2016-06-15T13:48:05Z"
 		},
 		{
 			"checksumSHA1": "YKJEHQmesxr6ExwGE4WZrpQsq4s=",
@@ -28,8 +28,16 @@
 			"revisionTime": "2016-06-16T09:50:52Z"
 		},
 		{
+			"checksumSHA1": "vqc3a+oTUGX8PmD0TS+qQ7gmN8I=",
 			"path": "golang.org/x/net/html",
-			"revision": ""
+			"revision": "bc3663df0ac92f928d419e31e0d2af22e683a5a2",
+			"revisionTime": "2016-06-21T20:48:10Z"
+		},
+		{
+			"checksumSHA1": "00eQaGynDYrv3tL+C7l9xH0IDZg=",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "bc3663df0ac92f928d419e31e0d2af22e683a5a2",
+			"revisionTime": "2016-06-21T20:48:10Z"
 		}
 	],
 	"rootPath": "github.com/caiguanhao/hyrpdf"
